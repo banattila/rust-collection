@@ -14,7 +14,7 @@ impl<T: Clone + PartialEq> LinkedList<T> {
         Self {head: None, len: 0}
     }
 
-    pub fn iter<'a>(&self) -> LinkedListIterator<T> {
+    pub fn iter(&self) -> LinkedListIterator<T> {
         LinkedListIterator::new(&self.head)
     }
 
@@ -96,6 +96,12 @@ impl<T: Clone + PartialEq> Collection<T> for LinkedList<T> {
                 },
             }
         }
+    }
+}
+
+impl<T: Clone + PartialEq> Default for LinkedList<T> {
+    fn default() -> Self {
+        LinkedList::new()
     }
 }
 
@@ -470,5 +476,5 @@ mod linked_list_tests {
 
             assert_eq!(original_item, copied_item);
         }
-    }
+    }  
 }
