@@ -1,9 +1,11 @@
 [package]
 name = "collection"
 version = "0.1.0"
+authors = ["Bán Attila <banattila@protonmail.com>"]
 edition = "2021"
+
+repository = "https://github.com/banattila/rust-collection"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-linkedlist = "0.1.1"
