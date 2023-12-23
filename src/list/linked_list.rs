@@ -1,10 +1,10 @@
-use crate::{nodes::list_node::ListNode, traits::{collection::Collection, list::{List, ListResults}}};
+use crate::{nodes::node::Node, traits::{collection::Collection, list::{List, ListResults}}};
 
 use super::linked_list_iterator::LinkedListIterator;
 
 #[derive(Debug, Clone)]
 pub struct LinkedList<T: Clone + PartialEq> {
-    head: Option<Box<ListNode<T>>>,
+    head: Option<Box<Node<T>>>,
     len: usize,
 }
 
@@ -25,7 +25,7 @@ impl<T: Clone + PartialEq> LinkedList<T> {
         loop {
             match current {
                 None => {
-                    let new_node = ListNode::new(data.clone());
+                    let new_node = Node::new(data.clone());
                     *current = Some(Box::new(new_node));
                     self.len += 1;
                     break;
@@ -68,7 +68,7 @@ impl<T: Clone + PartialEq> Collection<T> for LinkedList<T> {
     }
 
     fn insert(&mut self, data: T) {
-        let mut new_node = ListNode::new(data);
+        let mut new_node = Node::new(data);
         if self.is_empty() {
             self.head = Some(Box::new(new_node));
             self.len += 1;

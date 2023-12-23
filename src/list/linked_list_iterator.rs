@@ -1,12 +1,12 @@
-use crate::nodes::list_node::ListNode;
+use crate::nodes::node::Node;
 
 #[derive(Clone, Debug)]
 pub struct LinkedListIterator<'a, T: Clone> {
-    current: &'a Option<Box<ListNode<T>>>
+    current: &'a Option<Box<Node<T>>>
 }
 
 impl<'a, T: Clone> LinkedListIterator<'a, T> {
-    pub fn new(head: &'a Option<Box<ListNode<T>>>) -> Self {
+    pub fn new(head: &'a Option<Box<Node<T>>>) -> Self {
         Self {
             current: head,
         }

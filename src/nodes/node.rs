@@ -1,10 +1,10 @@
 #[derive(Debug, Clone)]
-pub struct ListNode<T: Clone> {
+pub struct Node<T: Clone> {
     data: T,
-    next: Option<Box<ListNode<T>>>,
+    next: Option<Box<Node<T>>>,
 }
 
-impl<T: Clone> ListNode<T> {
+impl<T: Clone> Node<T> {
     pub fn new(data: T) -> Self {
         Self { data, next: None }
     }
@@ -13,33 +13,33 @@ impl<T: Clone> ListNode<T> {
         self.data.clone()
     }
 
-    pub fn mut_next(&mut self) -> &mut Option<Box<ListNode<T>>> {
+    pub fn mut_next(&mut self) -> &mut Option<Box<Node<T>>> {
         &mut self.next
     }
 
-    pub fn next_clone(&self) -> Option<Box<ListNode<T>>> {
+    pub fn next_clone(&self) -> Option<Box<Node<T>>> {
         self.next.clone()
     }
 
-    pub fn next_ref(&self) -> &Option<Box<ListNode<T>>> {
+    pub fn next_ref(&self) -> &Option<Box<Node<T>>> {
         &self.next
     }
 
-    pub fn set_next(&mut self, other_node: Option<Box<ListNode<T>>>) {
+    pub fn set_next(&mut self, other_node: Option<Box<Node<T>>>) {
         self.next = other_node;
     }
 }
 
 #[cfg(test)]
 mod node_tests {
-    use super::ListNode;
+    use super::Node;
 
     #[test]
     fn create_node() {
         let data = 1i8;
         let data_two = 2i8;
-        let mut node = ListNode::new(data);
-        let node_two = ListNode::new(data_two);
+        let mut node = Node::new(data);
+        let node_two = Node::new(data_two);
         assert_eq!(node.data, data);
         assert!(node.next.is_none());
 
@@ -62,11 +62,10 @@ mod node_tests {
         let data_one = 1i8;
         let data_two = 2i8;
 
-        let mut node_one = ListNode::new(data_one);
-        let node_two = ListNode::new(data_two);
+        let mut node_one = Node::new(data_one);
+        let node_two = Node::new(data_two);
         assert!(node_one.next.is_none());
         assert!(node_two.next.is_none());
-
 
         node_one.set_next(Some(Box::new(node_two)));
 
@@ -86,7 +85,7 @@ mod node_tests {
     #[test]
     fn get_data_test() {
         let data = 1i8;
-        let node = ListNode::new(data);
+        let node = Node::new(data);
 
         assert_eq!(node.get_data(), data);
     }
