@@ -3,6 +3,8 @@ name = "collection"
 version = "0.1.0"
 authors = ["Bán Attila <banattila@protonmail.com>"]
 edition = "2021"
+description = "Created some collection example LinkedList, Stack and Queue"
+license = "MIT"
 
 repository = "https://github.com/banattila/rust-collection"
 
