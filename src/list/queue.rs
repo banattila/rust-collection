@@ -13,12 +13,12 @@ impl<T: Clone + PartialEq> Queue<T> {
         Self {list: LinkedList::<T>::new()}
     }
 
-    pub fn dequeue(&mut self) -> Result<Option<T>, ListResults> {
+    pub fn dequeue(&mut self) -> Result<T, ListResults> {
         let result = self.list.remove(0);
         match result {
             Err(err) => return Err(err),
             Ok(item) => {
-                return Ok(Some(item));
+                return Ok(item);
             },
         }
     }
@@ -97,9 +97,7 @@ mod queue_tests {
 
         match queue.dequeue() {
             Ok(item) => {
-                if let Some(element) = item {
-                    assert_eq!(element, 0);
-                }
+                assert_eq!(item, 0);
             },
             Err(_) => panic!("Result must be some"),
         }
