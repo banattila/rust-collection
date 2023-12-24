@@ -1,5 +1,5 @@
 [package]
-name = "collections"
+name = "r-collections"
 version = "0.1.0"
 authors = ["Bán Attila <banattila@protonmail.com>"]
 edition = "2021"
